@@ -1,16 +1,13 @@
 import { version } from "../../package.json";
 import { Router } from "express";
 import facets from "./facets";
+import http from "../services/httpService";
+
 require("@babel/polyfill");
 require("dotenv").config();
 
-console.log(process.env.apiKey);
-
 const apiKey = process.env.apiKey;
 const apiKeyParam = `?api_key=${apiKey}`;
-const region = "na1";
-const axios = require("axios").default;
-axios.defaults.baseURL = `https://${region}.api.riotgames.com/lol`;
 
 export default ({ config, db }) => {
   let api = Router();
@@ -34,7 +31,7 @@ export default ({ config, db }) => {
     const name = req.params.name;
     if (name) {
       try {
-        const response = await axios.get(
+        const response = await http.get(
           `/summoner/v4/summoners/by-name/${name}${apiKeyParam}`
         );
         console.log(response.data);
