@@ -6,11 +6,11 @@ import {
 } from "express";
 import facets from "./facets";
 
-// const configuration = require("config"); 
-// console.log("config: ", configuration);
-// console.log("key", process.env.apiKey);
+require('dotenv').config();
 
-const apiKey = "RGAPI-66285c51-c2d6-4d45-8bd6-ce602d164551";
+console.log(process.env.apiKey);
+
+const apiKey = process.env.apiKey;
 const apiKeyParam = `?api_key=${apiKey}`;
 const region = "na1";
 const axios = require("axios").default;

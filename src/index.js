@@ -20,17 +20,23 @@ app.use(cors({
 }));
 
 app.use(bodyParser.json({
-	limit : config.bodyLimit
+	limit: config.bodyLimit
 }));
 
 // connect to db
-initializeDb( db => {
+initializeDb(db => {
 
 	// internal middleware
-	app.use(middleware({ config, db }));
+	app.use(middleware({
+		config,
+		db
+	}));
 
 	// api router
-	app.use('/api', api({ config, db }));
+	app.use('/api', api({
+		config,
+		db
+	}));
 
 	app.server.listen(process.env.PORT || config.port, () => {
 		console.log(`Started on port ${app.server.address().port}`);
