@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/developit/express-es6-rest-api.git"
+    "url": "git+https://github.com/icedCoughfee/lol-server.git"
   },
   "author": "Jason Miller <jason@developit.ca>",
   "license": "MIT",
@@ -49,7 +49,7 @@
     "nodemon": "^1.9.2"
   },
   "bugs": {
-    "url": "https://github.com/developit/express-es6-rest-api/issues"
+    "url": "https://github.com/icedCoughfee/lol-server.git/issues"
   },
   "homepage": "https://github.com/developit/express-es6-rest-api#readme"
 }
