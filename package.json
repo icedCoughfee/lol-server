@@ -43,6 +43,7 @@
     "resource-router-middleware": "^0.6.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.6.2",
     "babel-cli": "^6.9.0",
     "babel-core": "^6.9.0",
     "babel-plugin-transform-runtime": "^6.23.0",
