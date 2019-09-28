@@ -1,7 +1,7 @@
 {
   "name": "lol-server",
   "version": "0.3.0",
-  "description": "Starter project for an ES6 RESTful Express API",
+  "description": "Nodejs simple server that interfaces Riot Games API for front-end use",
   "main": "dist",
   "scripts": {
     "dev": "nodemon -w src --exec \"babel-node src --presets @babel/env\"",
@@ -26,9 +26,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/developit/express-es6-rest-api.git"
+    "url": "git+https://github.com/icedCoughfee/lol-server.git"
   },
-  "author": "Jason Miller <jason@developit.ca>",
+  "author": "Brent Melton",
   "license": "MIT",
   "dependencies": {
     "@babel/node": "^7.0.0",
@@ -71,7 +71,7 @@
     "nodemon": "^1.9.2"
   },
   "bugs": {
-    "url": "https://github.com/developit/express-es6-rest-api/issues"
+    "url": "https://github.com/icedCoughfee/lol-server.git/issues"
   },
   "homepage": "https://github.com/developit/express-es6-rest-api#readme"
 }

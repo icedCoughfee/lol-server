@@ -1,27 +1,13 @@
-Express & ES6 REST API Boilerplate
-==================================
+# Riot Games API basic nodejs interface
 
-This is a straightforward boilerplate for building REST APIs with ES6 and Express.
+This API provides a basic nodejs template to allow users to develop the front-end. This example only provides the basic Riot Games API calls.The interface extends an [ES6 Express boilerplate](https://github.com/developit/express-es6-rest-api).
 
-- ES6 support via [babel](https://babeljs.io)
-- REST resources as middleware via [resource-router-middleware](https://github.com/developit/resource-router-middleware)
-- CORS support via [cors](https://github.com/troygoode/node-cors)
-- Body Parsing via [body-parser](https://github.com/expressjs/body-parser)
-
-> Tip: If you are using [Mongoose](https://github.com/Automattic/mongoose), you can automatically expose your Models as REST resources using [restful-mongoose](https://git.io/restful-mongoose).
-
-
-
-Getting Started
----------------
+## Getting Started
 
 ```sh
 # clone it
-git clone git@github.com:developit/express-es6-rest-api.git
-cd express-es6-rest-api
-
-# Make it your own
-rm -rf .git && git init && npm init
+git clone git@github.com:icedCoughfee/lol-server.git
+cd lol-server
 
 # Install dependencies
 npm install
@@ -31,27 +17,12 @@ PORT=8080 npm run dev
 
 # Start production server:
 PORT=8080 npm start
-```
-Docker Support
-------
-```sh
-cd express-es6-rest-api
 
-# Build your docker
-docker build -t es6/api-service .
-#            ^      ^           ^
-#          tag  tag name      Dockerfile location
+# Deploying to Heroku
+Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) or use Heroku website portal.
+Store the environment variables under Settings > Reveal configuration variables > apiKey. You must add the environment variable yourself. Set the value to your Riot Games API key, which will be replaced at run-time.
 
-# run your docker
-docker run -p 8080:8080 es6/api-service
-#                 ^            ^
-#          bind the port    container tag
-#          to your host
-#          machine port   
-
-```
-
-License
--------
+## License
 
 MIT
+```
