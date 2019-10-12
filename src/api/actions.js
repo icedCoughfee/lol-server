@@ -13,7 +13,10 @@ function getUrlParams(req, route) {
   let urlParams = _.words(route, /:[a-zA-Z0-9]+/g).map(param =>
     _.replace(param, ":", "")
   );
-  return urlParams.map(param => ({ param: param, value: req.params[param] }));
+  return urlParams.map(param => ({
+    param: param,
+    value: req.params[param]
+  }));
 }
 
 // given any variation of /lol/champion-mastery/v4/champion-masteries/by-summoner/{encryptedSummonerId}/by-champion/{championId}
@@ -48,4 +51,15 @@ export default function getResource(
       res.send(error.response.data);
     }
   });
+}
+
+// specific route actions - nested api calls
+export function getChampionMastery(summonerName) {
+  const response = http.get(`/summoner/v4/summoners/by-name/${summonerName}${apiKeyParam}`)
+    .then(res => res.data.id)
+    .then(id => http.get(`/champion-mastery/v4/champion-masteries/by-summoner/${id}${apiKeyParam}`))
+    .then(mastery => mastery)
+    .catch(e => console.log("ERRORROROER"))
+  console.log(response);
+  return response;
 }

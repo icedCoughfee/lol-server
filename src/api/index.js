@@ -1,9 +1,16 @@
-import { version } from "../../package.json";
-import { Router } from "express";
+import {
+  Router
+} from "express";
 import facets from "./facets";
-import getResource from "./actions";
+import getResource, {
+  getChampionMastery
+} from "./actions";
+import http from "../services/httpService"
 
-export default ({ config, db }) => {
+export default ({
+  config,
+  db
+}) => {
   let api = Router();
 
   // mount the facets resource
@@ -18,6 +25,19 @@ export default ({ config, db }) => {
   // perhaps expose some API metadata at the root
   api.get("/", async (req, res) => {
     res.send("Welcome to the backend application!");
+  });
+
+
+  // should the front end consume this data from this interface or should we call here an export out?
+  // seems pretty redundant to do this
+  api.get("/hello", async (req, res) => {
+    try {
+      const response = await http.get("http://ddragon.leagueoflegends.com/cdn/9.3.1/data/en_US/champion.json");
+      res.send(response.data);
+
+    } catch (e) {
+      res.send(e.response.data);
+    }
   });
 
   // CHAMPION ROTATIONS
@@ -104,6 +124,18 @@ export default ({ config, db }) => {
     "/champion-mastery/champion-masteries/by-summoner/:encryptedSummonerId",
     "/champion-mastery/v4/champion-masteries/by-summoner/{encryptedSummonerId}"
   );
+
+  api.get("/champion-mastery/champion-masteries/by-summoner-name/:summonerName", async (req, res) => {
+    const {
+      summonerName
+    } = req.params;
+    const response = await getChampionMastery(summonerName);
+    try {
+      res.send(response.data)
+    } catch (e) {
+      res.send(e.response.data)
+    }
+  })
 
   getResource(
     api,
